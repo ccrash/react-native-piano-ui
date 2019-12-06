@@ -1,0 +1,31 @@
+{
+    "name": "@ccrash/react-native-piano-ui",
+    "version": "0.0.1",
+    "description": "Simple react-native piano UI",
+    "main": "./index.js",
+    "private": false,
+    "peerDependencies": {
+        "react": "*"
+    },
+    "scripts": {
+        "start": "webpack --watch",
+        "build": "webpack",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "prop-types": "^15.7.2"
+    },
+    "devDependencies": {
+        "prop-types": "*",
+        "react": "*",
+        "react-native": "*",
+        "enzyme": "^3.10.0",
+        "enzyme-adapter-react-16": "^1.15.1",
+        "eslint": "^5.16.0",
+        "eslint-config-airbnb": "^17.1.1",
+        "eslint-plugin-react": "^7.16.0",
+        "eslint-plugin-react-native": "^3.8.1",
+        "jest": "24.0.0",
+        "metro-react-native-babel-preset": "0.56.0"
+    }
+}
