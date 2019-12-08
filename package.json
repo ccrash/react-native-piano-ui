@@ -2,12 +2,10 @@
     "name": "@ccrash/react-native-piano-ui",
     "version": "0.0.2",
     "description": "Simple react-native piano UI",
-    "main": "./index.js",
+    "main": "./src/pianoKeyboard/index.js",
     "private": false,
     "peerDependencies": {
         "react": "*"
-    },
-    "scripts": {
     },
     "dependencies": {
         "prop-types": "^15.7.2"
