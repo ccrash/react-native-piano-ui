@@ -6,21 +6,13 @@ import style from './style'
 
 export class PianoKey extends Component {
 
-    state = {
-        marked: false,
-    }
-
     onKeyPressed = () => {
         const {mark, keyboardKey, octave, onKeyPressed} = this.props
-        if(mark) {
-            this.setState({marked: true})
-        }
         return onKeyPressed({name: keyboardKey.name, isWhite: keyboardKey.isWhite, octave})
     }
 
     determineKeyStyle = () => {
-        const {keyboardKey, premark} = this.props;
-        const { marked } = this.state
+        const {keyboardKey, premark, mark} = this.props;
         let custom = null
         if(keyboardKey.isWhite) {
             custom = keyboardKey.overlap ? style.whiteKey : {...style.whiteKey, ...style.notOverlapping}
@@ -29,7 +21,7 @@ export class PianoKey extends Component {
             custom = style.blackKey
         }
         if(premark) { custom = {...custom, ...style.premarkedKey} }
-        if(marked) { custom = {...custom, ...style.markedKey} }
+        if(mark) { custom = {...custom, ...style.markedKey} }
         return {...custom, ...style.key}
     }
 

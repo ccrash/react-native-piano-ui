@@ -14,10 +14,10 @@ class PianoOctave extends Component {
         this.renderKeys = this.renderKeys.bind(this)
     }
 
-    checkIfKeyIsPremarked = (keyboardKey) => {
-        const {premark, octave} = this.props
-        for (var key in premark) {
-            if(premark[key] === `${octave}${keyboardKey.name}`)   {
+    checkIfKeyIsMarked = (keyboardKey, list) => {
+        const {octave} = this.props
+        for (var key in list) {
+            if(list[key] === `${octave}${keyboardKey.name}`)   {
                 return true
             }
         }
@@ -25,13 +25,13 @@ class PianoOctave extends Component {
     }
     
     renderKeys() {
-        const { octave, mark, onKeyPressed } = this.props;
+        const { octave, mark, premark, onKeyPressed } = this.props;
         return Object.keys(keys).map(key => {
             return (
                 <PianoKey key={`${octave}${key}`} 
                     octave={octave} 
-                    premark={this.checkIfKeyIsPremarked(keys[key])} 
-                    mark={mark} 
+                    premark={this.checkIfKeyIsMarked(keys[key], premark)} 
+                    mark={this.checkIfKeyIsMarked(keys[key], mark)} 
                     keyboardKey={keys[key]} 
                     onKeyPressed={onKeyPressed} />
             )
@@ -46,14 +46,14 @@ class PianoOctave extends Component {
 
 PianoOctave.defaultProps = {
     octave: '',
-    mark: false,
+    mark: [],
     premark: [],
     onKeyPressed: (keyObject) => {}
 }
 
 PianoOctave.propTypes = {
     octave: PropTypes.any,
-    mark: PropTypes.bool,
+    mark: PropTypes.array,
     premark: PropTypes.array,
     onKeyPressed: PropTypes.func,
 }
